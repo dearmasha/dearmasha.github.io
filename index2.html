@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+    <title>Masha Zarnitsa</title>
+    
+    <link rel="stylesheet" href="index2.css">
+</head>
+    <body>
+        <div class='wrapper'>
+            <header class="clearfix">
+                <div class='title'>Masha Zarnitsa</div>
+                <ul class='nav container'>
+                    <li><a href="#demoreel" class='js-local'>Reel</a></li>
+                    <li><a href="http://mashazarnitsa.tumblr.com/">Sketch Blog</a></li>
+                    <li><a href="#contact" class='js-local'>Contact</a></li>
+                </ul>
+            </header>
+            <div id='view' class='clear view'></div>
+        </div>
+    </body>
+    
+<script src="http://www.kirilv.com/tiny.cdn/lib/request/0.4.1/request.min.js"></script>
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+
+<script>
+    function playerInit(){
+        var player = $f(document.querySelector('#reel iframe'));
+        var frame = player.element;
+        var reel = frame.parentNode;
+
+        // When the player is ready, add listeners for pause, finish, and playProgress
+        player.addEvent('ready', function() {
+            player.addEvent('pause', onStop);
+            player.addEvent('finish', onStop);
+            //player.addEvent('playProgress', onPlayProgress);
+            player.addEvent('play', onPlay);
+        });
+
+        function onPlay(id){
+            var ratio = { width: 500, height: 281, target: .9 };
+            reel.className += 'modal';
+            
+            //assume it will fit in landscape
+            var height = parseInt(window.innerHeight * ratio.target);
+            var width = parseInt(ratio.width * height / ratio.height);
+
+            if (width > window.innerWidth){
+                //switch to assume portrait
+                width = parseInt(window.innerWidth * ratio.target);
+                height = parseInt(ratio.height * width / ratio.width);
+            }
+
+            frame.style.height = height + 'px';
+            frame.style.width = width + 'px';
+        }
+
+        function onStop(id) {
+            reel.className = '';
+            frame.style.height = '';
+            frame.style.width = '';
+        }    
+    }
+    
+    function showResume(body, view){
+        window.b = body;
+        console.log(body);
+        var style, text;
+        body.replace(/\<style\>.+\<\/style\>/, function(match){
+            style = match;
+            return '';
+        });
+        body.replace(/\<body\>.+\<\/body\>/, function(match){
+            text = match.replace(/\<body\>|\<\/body\>/g, '');
+            console.log(match);
+            console.log(text);
+            return '';
+        });
+        
+        view.innerHTML = text;
+    }
+    
+    window.onpopstate = function(ev){
+        var hash = window.location.hash || (function(){
+            var h = window.location.href.match(/\#.+/);
+            return (h && h.length) ? h[0] : '#demoreel';
+        })();
+        
+        request({
+            url: hash.replace('#', '') + '.html'
+        }, function(err, body, xhr){
+            var view = document.getElementById('view');
+            
+            //if (hash === '#resume') showResume(body, view);
+            //else {
+                view.innerHTML = body;
+                if (hash === '#demoreel') playerInit();
+            //}
+        });
+    }
+    
+    //first init
+    window.onpopstate();
+</script>
+
+<script src='assets/analytics.js'></script>
+
+</html>
