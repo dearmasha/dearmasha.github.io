@@ -9,15 +9,18 @@
 	
     <title>Masha Zarnitsa</title>
     
+<!--    <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>-->
+<!--    <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather|Slabo+27px|Open+Sans|Roboto' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="index2.css">
 </head>
     <body>
         <div class='wrapper'>
-            <header class="clearfix">
+            <header class="header clearfix">
                 <div class='title'>Masha Zarnitsa</div>
                 <ul class='nav container'>
                     <li><a href="#demoreel" class='js-local'>Reel</a></li>
-                    <li><a href="http://mashazarnitsa.tumblr.com/">Sketch Blog</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact" class='js-local'>Contact</a></li>
                 </ul>
             </header>
@@ -68,8 +71,6 @@
     }
     
     function showResume(body, view){
-        window.b = body;
-        console.log(body);
         var style, text;
         body.replace(/\<style\>.+\<\/style\>/, function(match){
             style = match;
@@ -96,11 +97,8 @@
         }, function(err, body, xhr){
             var view = document.getElementById('view');
             
-            //if (hash === '#resume') showResume(body, view);
-            //else {
-                view.innerHTML = body;
-                if (hash === '#demoreel') playerInit();
-            //}
+            view.innerHTML = body;
+            if (hash === '#demoreel') playerInit();
         });
     }
     
