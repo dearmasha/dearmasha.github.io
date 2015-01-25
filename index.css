@@ -44,6 +44,10 @@ Body - main
     text-decoration: none;
 }
 
+.view {
+    padding-bottom: 20px;
+}
+
 .center { text-align: center; }
 .bigger { font-size: 1.5em; }
 .top { margin-top: 40px; }
@@ -95,7 +99,6 @@ div#reel {
 }
 div.credits {
     z-index: 0;
-    margin-bottom: 20px;
 }
 
 div#reel iframe {
