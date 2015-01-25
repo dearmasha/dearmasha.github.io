@@ -169,13 +169,13 @@ Body - blog
     display: block;
     margin: 5px auto 10px;
     max-height: 500px;
+    max-width: 100%;
 }
 .post .postImg.postImgSmall {
     width: 33.3%;
     height: 250px;
     display: inline-block;
     object-fit: contain;
-    
 }
 
 .post .videoEmbed {
@@ -184,6 +184,10 @@ Body - blog
     max-height: 500px;
     max-width: 500px;
     width: 100%;
+}
+.post .videoEmbed iframe {
+    max-width: 100%;
+    max-height: 50.6vw; /* 90% */
 }
 
 .post .postFooter {
@@ -236,5 +240,9 @@ Media
         width: 90%;
         padding: 0 5px;
         box-sizing: border-box;
+    }
+    
+    .post .postImg {
+        max-height: 80vw;
     }
 }
