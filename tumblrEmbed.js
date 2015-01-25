@@ -8,11 +8,10 @@ function jsonLoad() {
 }
 
 function jsonError() {
-    console.log('error', arguments);
+//    console.log('error', arguments);
 }
 
 function loadContent(file) {
-    console.log(file);
     var posts = file.posts;
     
     var blogContent = document.getElementById('blogContent');
