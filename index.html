@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/> -->
+	<meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/> 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<!-- Apple web app tags -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<!-- vendor neutral web app tags -->
-	<meta name="mobile-web-app-capable" content="yes">
 	
     <title>Masha Zarnitsa</title>
     
-    <link rel="shortcut icon" sizes="196x196" href="favicon.png">
-	
-    <link rel='stylesheet' href='index.css' type='text/css' />
+<!--    <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>-->
+<!--    <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather|Slabo+27px|Open+Sans|Roboto' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="index.css">
+    
+    <link rel="icon" type="image/png" href="assets/blue_128.png">
 </head>
-
-<body>
-    <div class='wrapper'>
-        <div class='title'>masha zarnitsa</div>
-        <ul class='nav container'>
-            <li><a href="#demoreel" class='js-local'>Demo Reel</a></li>
-            <li><a href="#resume" class='js-local'>Resume</a></li>
-            <li><a href="http://mashazarnitsa.tumblr.com/">Sketch Blog</a></li>
-            <li><a href="#contact" class='js-local'>Contact</a></li>
-        </ul>
-        <div id='view'></div>
-    </div>
-</body>
-
-<script src="http://www.kirilv.com/tiny.cdn/lib/request/0.2.0/request.min.js"></script>
+    <body>
+        <div class='wrapper'>
+            <header class="header clearfix">
+                <div class='title'><a href="/">Masha Zarnitsa</a></div>
+                <ul class='nav container'>
+                    <li><a href="#demoreel" class='js-local'>Reel</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact" class='js-local'>Contact</a></li>
+                </ul>
+            </header>
+            <div id='view' class='clear view'></div>
+        </div>
+    </body>
+    
+<script src="http://www.kirilv.com/tiny.cdn/lib/request/0.4.1/request.min.js"></script>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+
 <script>
     function playerInit(){
         var player = $f(document.querySelector('#reel iframe'));
@@ -73,8 +73,6 @@
     }
     
     function showResume(body, view){
-        window.b = body;
-        console.log(body);
         var style, text;
         body.replace(/\<style\>.+\<\/style\>/, function(match){
             style = match;
@@ -101,11 +99,8 @@
         }, function(err, body, xhr){
             var view = document.getElementById('view');
             
-            //if (hash === '#resume') showResume(body, view);
-            //else {
-                view.innerHTML = body;
-                if (hash === '#demoreel') playerInit();
-            //}
+            view.innerHTML = body;
+            if (hash === '#demoreel') playerInit();
         });
     }
     
@@ -114,5 +109,5 @@
 </script>
 
 <script src='assets/analytics.js'></script>
-    
+
 </html>
