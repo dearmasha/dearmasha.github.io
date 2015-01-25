@@ -12,6 +12,8 @@ html, body{
     padding: 0;
     margin: 0;
     height: 100%;
+    width: 100%;
+    position: relative;
     
     font-family: Lato, Helvetica, sans-serif;
     font-size: 1em;
@@ -99,6 +101,7 @@ div#reel {
 }
 div.credits {
     z-index: 0;
+    margin-bottom: 20px;
 }
 
 div#reel iframe {
@@ -222,10 +225,16 @@ Media
 @media all and (max-width: 620px) {
     .title, ul.nav { float: none; margin-left: auto; margin-right: auto; }
     .wrapper {
-        width: 100vw;
+        width: 100%;
     }
     div#reel iframe {
         width: 100vw;
         height: 56.25vw;
+    }
+    
+    .post {
+        width: 90%;
+        padding: 0 5px;
+        box-sizing: border-box;
     }
 }

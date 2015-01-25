@@ -17,6 +17,10 @@ function loadContent(file) {
     
     var blogContent = document.getElementById('blogContent');
     
+    while(blogContent.firstChild) {
+        blogContent.removeChild(blogContent.firstChild);
+    }
+    
     posts.forEach(function(post){
         var dom = makePost(post);
         blogContent.appendChild(dom);
