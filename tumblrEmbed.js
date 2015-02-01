@@ -1,4 +1,4 @@
-/* jshint browser: true */
+/* jshint browser: true, -W069 */
 /* global tumblr_api_read */
 
 function jsonLoad() {
