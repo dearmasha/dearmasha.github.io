@@ -9,8 +9,6 @@
 	
     <title>Masha Zarnitsa</title>
     
-<!--    <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>-->
-<!--    <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather|Slabo+27px|Open+Sans|Roboto' rel='stylesheet' type='text/css'>-->
     <link href='http://fonts.googleapis.com/css?family=Lato|Merriweather' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="index.css">
     
@@ -88,14 +86,56 @@
         view.innerHTML = text;
     }
     
+    var gaQueue = (function(){
+        var queue = [];
+        
+        var send = function(){
+            var args = [].slice.call(arguments);
+            
+            if (window.ga) {
+                args.unshift('send');
+                ga.apply(undefined, args);
+            } else {
+                queue.push(args);
+            }
+        };
+        
+        var runNext = function(){
+            if (queue.length) {
+                var next = queue.shift();
+                send.apply(undefined, next);
+            }
+        };
+        
+        var add = function(){
+            var args = [].slice.call(arguments);
+            send.apply(undefined, args);
+        };
+        
+        var drain = function(){
+            while(queue.length){
+                runNext();
+            }
+        };
+        
+        return {
+            add: add,
+            drain: drain
+        }
+    })();
+    
     window.onpopstate = function(ev){
         var hash = window.location.hash || (function(){
             var h = window.location.href.match(/\#.+/);
             return (h && h.length) ? h[0] : '#demoreel';
-        })();
+        })(),
+            url = hash.replace('#', '') + '.html';
+        
+        // add to Google Analytics queue
+        gaQueue.add('pageview', '/' + url);
         
         request({
-            url: hash.replace('#', '') + '.html'
+            url: url
         }, function(err, body, xhr){
             var view = document.getElementById('view');
             
