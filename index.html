@@ -40,8 +40,8 @@
         // When the player is ready, add listeners for pause, finish, and playProgress
         player.addEvent('ready', function() {
             player.addEvent('pause', onStop);
-            player.addEvent('finish', onStop);
-            //player.addEvent('playProgress', onPlayProgress);
+            player.addEvent('finish', onFinish);
+            player.addEvent('playProgress', onProgress);
             player.addEvent('play', onPlay);
         });
 
@@ -67,7 +67,16 @@
             reel.className = '';
             frame.style.height = '';
             frame.style.width = '';
-        }    
+        }
+        
+        function onProgress(){
+            player.removeEvent('playProgress', onProgress);
+            gaQueue.add('event', 'video', 'start');
+        }
+        function onFinish(){
+            gaQueue.add('event', 'video', 'finish');
+            onStop();
+        }
     }
     
     function showResume(body, view){
