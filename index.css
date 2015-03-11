@@ -99,7 +99,6 @@ div#reel {
 }
 div.credits {
     z-index: 0;
-    max-width: 34rem;
     margin: 0 auto;
 }
 
@@ -129,6 +128,8 @@ div#reel.modal iframe {
 
 .entry-wrapper {
     margin: 40px auto 0;
+    width: 50%;
+    float: left;
 }
 
 .caption {
