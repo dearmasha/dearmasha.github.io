@@ -215,6 +215,78 @@ Body - blog
 }
 
 /*****************
+Body - resume
+*****************/
+
+.resume {
+    max-width: 44rem;
+    width: 94%;
+    margin: 0 auto;
+}
+.resume section {
+    margin-bottom: 2rem;
+}
+.resume section.education {
+    text-align: center;
+}
+.resume h1 {
+    font-size: 1.5rem;
+    maring: 0;
+    padding: 0;
+    text-align: right;
+}
+.resume h2 {
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 20px 0 5px;
+}
+.resume h3 {
+    font-size: .9rem;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+.resume h4 {
+    padding: 0;
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.resume ul {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 5px 0;
+}
+
+.resume p {
+    padding: 0;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.resume .heading {
+    font-style: italic;
+    display: block;
+    margin: 10px 0 5px;
+}
+.resume .heading:after {
+    content: ":";
+}
+.resume .tag {
+    padding: 2px 8px;
+    margin: 3px;
+    font-size: .9rem;
+    line-height: 2.3;
+    border: 1px solid #bababa;
+    background: #f6f1f7;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+/*****************
 Media
 *****************/
 
