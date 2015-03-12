@@ -324,4 +324,11 @@ Media
     .post .postImg {
         max-height: 80vw;
     }
+    
+    .resume h1 {
+        text-align: center;
+    }
+    .resume section.education {
+        text-align: left;
+    }
 }
