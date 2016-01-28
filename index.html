@@ -42,35 +42,9 @@
 
         // When the player is ready, add listeners for pause, finish, and playProgress
         player.addEvent('ready', function() {
-            player.addEvent('pause', onStop);
             player.addEvent('finish', onFinish);
             player.addEvent('playProgress', onProgress);
-            player.addEvent('play', onPlay);
         });
-
-        function onPlay(id){
-            var ratio = { width: 500, height: 281, target: .9 };
-            reel.className += 'modal';
-            
-            //assume it will fit in landscape
-            var height = parseInt(window.innerHeight * ratio.target);
-            var width = parseInt(ratio.width * height / ratio.height);
-
-            if (width > window.innerWidth){
-                //switch to assume portrait
-                width = parseInt(window.innerWidth * ratio.target);
-                height = parseInt(ratio.height * width / ratio.width);
-            }
-
-            frame.style.height = height + 'px';
-            frame.style.width = width + 'px';
-        }
-
-        function onStop(id) {
-            reel.className = '';
-            frame.style.height = '';
-            frame.style.width = '';
-        }
         
         function onProgress(){
             player.removeEvent('playProgress', onProgress);
