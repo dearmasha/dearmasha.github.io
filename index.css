@@ -38,6 +38,7 @@ Body - main
     position: relative;
     height: 100%;
     width: 100%;
+    max-width: 1400px;
 }
 
 .view {
@@ -76,7 +77,11 @@ ul.nav li {
     width: 100%;
 }
 
-.nav li.active:after {
+.nav li a {
+    position: relative;
+}
+
+.nav li.active a:after {
     content: "";
     position: absolute;
     left: 0;
@@ -215,7 +220,7 @@ Body - resume
 }
 .resume h1 {
     font-size: 1.5rem;
-    maring: 0;
+    margin: 0;
     padding: 0;
     text-align: right;
 }
