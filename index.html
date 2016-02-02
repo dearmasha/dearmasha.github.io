@@ -40,11 +40,11 @@
         
         <header class="header clearfix">
             <ul class='nav'>
-                <li><a href="#demoreel" class='js-local'>Reel</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li class="demoreel active"><a href="#demoreel" class='js-local'>Reel</a></li>
+                <li class="blog"><a href="#blog">Blog</a></li>
                 <li class="big-logo"><a href="/"><svg><use xlink:href="#big-logo"></use></svg></a></li>
-                <li><a href="#contact" class='js-local'>Contact</a></li>
-                <li><a href="#resume" class='js-local'>Resume</a></li>
+                <li class="contact"><a href="#contact" class='js-local'>Contact</a></li>
+                <li class="resume"><a href="#resume" class='js-local'>Resume</a></li>
             </ul>
         </header>
         <div class='wrapper'>
@@ -56,7 +56,7 @@
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 
 <script>
-    function playerInit(){
+    function playerInit() {
         var player = $f(document.querySelector('#reel iframe'));
         var frame = player.element;
         var reel = frame.parentNode;
@@ -77,7 +77,7 @@
         }
     }
     
-    function showResume(body, view){
+    function showResume(body, view) {
         var style, text;
         body.replace(/\<style\>.+\<\/style\>/, function(match){
             style = match;
@@ -85,15 +85,13 @@
         });
         body.replace(/\<body\>.+\<\/body\>/, function(match){
             text = match.replace(/\<body\>|\<\/body\>/g, '');
-            console.log(match);
-            console.log(text);
             return '';
         });
         
         view.innerHTML = text;
     }
     
-    var gaQueue = (function(){
+    var gaQueue = (function() {
         var queue = [];
         
         var send = function(){
@@ -107,20 +105,20 @@
             }
         };
         
-        var runNext = function(){
+        var runNext = function() {
             if (queue.length) {
                 var next = queue.shift();
                 send.apply(undefined, next);
             }
         };
         
-        var add = function(){
+        var add = function() {
             var args = [].slice.call(arguments);
             send.apply(undefined, args);
         };
         
-        var drain = function(){
-            while(queue.length){
+        var drain = function() {
+            while (queue.length) {
                 runNext();
             }
         };
@@ -131,12 +129,24 @@
         }
     })();
     
-    window.onpopstate = function(ev){
-        var hash = window.location.hash || (function(){
+    window.onpopstate = function(ev) {
+        var hash = window.location.hash || (function() {
             var h = window.location.href.match(/\#.+/);
             return (h && h.length) ? h[0] : '#demoreel';
-        })(),
-            url = hash.replace('#', '') + '.html';
+        })();
+        var view = hash.replace('#', '');
+        var url = view + '.html';
+        
+        // deactivate any active link
+        [].forEach.call(document.querySelectorAll('li.active'), function(el) {
+            el.classList.remove('active');
+        });
+        
+        // activate the link that was just popped
+        var elem = document.querySelector('.nav .' + view);
+        if (elem) {
+            elem.classList.add('active');
+        }
         
         // add to Google Analytics queue
         gaQueue.add('pageview', '/' + url);

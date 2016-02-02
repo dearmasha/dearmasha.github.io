@@ -76,6 +76,16 @@ ul.nav li {
     width: 100%;
 }
 
+.nav li.active:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+    height: 8px;
+    width: 100%;
+    background: #FFDA00;
+}
+
 li a, li a:visited, li a:hover, li a:active {
     color: inherit;
     text-decoration: none;
