@@ -10,9 +10,10 @@ html, body{
     position: relative;
     
     font-family: Lato, Helvetica, sans-serif;
+    font-weight: 100;
     font-size: 1em;
-    color: #444;
-    background: #fcfcfc;
+    color: #646569;
+    background: #F5F5F0;
 }
 
 /*****************
@@ -22,35 +23,28 @@ Body - main
 .wrapper {
     position: relative;
     box-sizing: border-box;
-    min-height: 100%;
     width: 80vw;
     max-width: 960px;
     margin: 0 auto;
+    padding-top: 40px;
 }
 
 .header {
-    padding: 40px 0;
+    height: 180px;
+    background: white;
 }
 
-.title {
-    font-family: 'Slabo 27px', serif;
-    font-family: 'Merriweather', serif;
-    text-align: center;
-    font-size: 2.5em;
-    float: left;
-}
-.title a {
-    color: inherit;
-    text-decoration: none;
+.nav {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .view {
     padding-bottom: 30px;
 }
 
-.center { text-align: center; }
 .bigger { font-size: 1.5em; }
-.top { margin-top: 40px; }
 .clear { clear: both; }
 .clearfix:after {
     content: "";
@@ -63,26 +57,23 @@ Body - nav
 *****************/
 
 ul.nav {
-    float: right;
+    display: flex;
+    flex-direction: row;
+    
     margin: 0 auto;
     box-sizing: border-box;
     list-style-type: none;
     text-align: center;
     padding: 0;
     
-    font-size: 1.2em;
+    font-size: 2em;
+    line-height: 1em;
     text-transform: lowercase;
-    line-height: 2.5em;
-    
-    color: #666;
 }
 ul.nav li {
-    display: inline-block;
-    padding: 0 15px;
-}
-ul.nav li:last-child { 
-    padding-right: 0;
-    border: none;
+    position: relative;
+    margin: auto;
+    width: 100%;
 }
 
 li a, li a:visited, li a:hover, li a:active {
