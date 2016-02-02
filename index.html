@@ -138,7 +138,7 @@
         var url = view + '.html';
         
         // deactivate any active link
-        [].forEach.call(document.querySelectorAll('li.active'), function(el) {
+        [].forEach.call(document.querySelectorAll('li.active') || [], function(el) {
             el.classList.remove('active');
         });
         
