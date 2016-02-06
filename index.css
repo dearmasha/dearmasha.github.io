@@ -97,6 +97,10 @@ li a, li a:visited, li a:hover, li a:active {
     text-decoration: none;
 }
 
+.big-logo-mobile {
+    display: none;
+}
+
 /*****************
 Body - video reel
 *****************/
@@ -290,14 +294,42 @@ Media
         width: 90%;
         float: none;
     }
+    
+    .big-logo {
+        display: none;
+    }
+    
+    .big-logo-mobile {
+        display: block;
+        max-height: 100px;
+    }
+    
+    .big-logo-mobile > * {
+        display: block;
+        height: 100%;
+    }
+    
+    .big-logo-mobile svg {
+        margin: 10px auto;
+        height: 100px;
+        width: 100%;
+    }
+    
+    ul.nav {
+        height: auto;
+        padding: 20px 0;
+    }
+    
+    ul.nav li {
+        width: auto;
+    }
 }
 
 @media all and (max-width: 620px) {
     .title,
     ul.nav { 
-        float: none; 
-        margin-left: auto; 
-        margin-right: auto; 
+        font-size: 1.6em;
+        padding-top: 30px;
     }
     .wrapper {
         width: 100%;
@@ -322,5 +354,16 @@ Media
     }
     .resume section.education {
         text-align: left;
+    }
+}
+
+@media all and (max-width: 380px) {
+    ul.nav {
+        font-size: 1.2em;
+    }
+    
+    .nav li.active a:after {
+        height: 5px;
+        bottom: -10px;
     }
 }
