@@ -43,7 +43,7 @@ Body - main
 }
 
 .view {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 .bigger { font-size: 1.5em; }
@@ -60,6 +60,14 @@ a {
 }
 a:hover {
     color: #FF5210;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.i {
+    font-style: italic;
 }
 
 /*****************
@@ -227,42 +235,46 @@ Body - resume
 *****************/
 
 .resume {
-    max-width: 44rem;
+    max-width: 54rem;
     width: 94%;
     margin: 0 auto;
 }
 .resume section {
     margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
 }
-.resume section.education {
-    text-align: center;
-}
-.resume h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    padding: 0;
-    text-align: right;
-}
-.resume h2 {
-    font-size: 1.2rem;
-    line-height: 1.2;
-    padding: 0;
-    margin: 20px 0 3px;
-}
-.resume h3 {
-    font-size: .9rem;
-    font-style: italic;
-    font-weight: normal;
-    line-height: 1.3;
-    padding: 0;
-    margin: 0;
+.resume .title {
+    display: block;
+    width: 160px;
+    margin: 0 auto;
     
-    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FFDA00;
+    
+    text-align: right;
+    padding-right: 25px;
 }
-.resume h4 {
-    padding: 0;
-    margin: 5px 0;
-    font-size: 1rem;
+.resume article {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.resume section.about {
+    display: none;
+    height: 100px;
+}
+.resume .about .title svg {
+    width: 100%;
+    height: 100px;
+}
+
+.resume section.experience ul {
+    padding-bottom: 1rem;
+}
+.resume section.awards p {
+    padding-bottom: 0.6rem;
 }
 
 .resume ul {
@@ -280,30 +292,17 @@ Body - resume
     line-height: 1.4;
 }
 
-.resume .heading {
-    font-style: italic;
-    display: block;
-    margin: 10px 0 5px;
-}
-.resume .heading:after {
-    content: ":";
-}
-.resume .tag {
-    padding: 2px 8px;
-    margin: 3px;
-    font-size: .9rem;
-    line-height: 2.3;
-    border: 1px solid #c4c4c4;
-    background: #F6F3D9;
-    border-radius: 2px;
-    white-space: nowrap;
+.resume .download {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 /*****************
 Media
 *****************/
 
-@media all and (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .entry-wrapper {
         width: 90%;
         float: none;
@@ -339,10 +338,9 @@ Media
     }
 }
 
-@media all and (max-width: 620px) {
-    .title,
+@media screen and (max-width: 620px) {
     ul.nav { 
-        font-size: 1.5em;
+        font-size: 1.5rem;
         padding-top: 30px;
     }
     .nav li.active a:after {
@@ -368,22 +366,66 @@ Media
         max-height: 80vw;
     }
     
-    .resume h1 {
-        text-align: center;
+    .resume section,
+    .resume .title,
+    .resume article{
+        display: block;
+        width: 100%;
     }
-    .resume section.education {
-        text-align: left;
+    
+    .resume .title {
+        padding: 0px 0 20px 0;
+        text-align: center;
     }
 }
 
-@media all and (max-width: 380px) {
+@media screen and (max-width: 380px) {
     ul.nav {
-        font-size: 1.2em;
+        font-size: 1.2rem;
         font-weight: 400;
     }
     
     .nav li.active a:after {
         height: 5px;
         bottom: -8px;
+    }
+}
+
+@media print {
+    @page {
+        size: auto;
+        margin: 0.85in 0.5in;    
+    }
+    
+    body {
+        background: white;
+        font-size: 0.92em;
+    }
+    
+    header, .resume .download {
+        display: none;
+    }
+    
+    .wrapper, .view {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .resume {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .resume ul {
+        padding: 0 0 0 18px;
+    }
+    
+    .resume section.about {
+        display: flex;
+    }
+    
+    .resume .nobreak {
+        page-break-inside: avoid;
     }
 }
