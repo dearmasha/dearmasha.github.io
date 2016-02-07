@@ -54,6 +54,14 @@ Body - main
     clear: both;
 }
 
+a {
+    color: #00ADEF;
+    text-decoration: none;
+}
+a:hover {
+    color: #FF5210;
+}
+
 /*****************
 Body - nav
 *****************/
@@ -132,8 +140,8 @@ div#reel iframe {
 }
 
 .caption img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     display: table-cell;
     vertical-align: middle;
@@ -143,7 +151,13 @@ div#reel iframe {
 .caption div {
     display: table-cell;
     vertical-align: middle;
-    padding: 10px 10px 10px 20px;
+    padding: 0px 15px;
+}
+
+.caption p {
+    padding: 0;
+    margin: 4px 0;
+    font-size: .94em;
 }
 
 /*****************

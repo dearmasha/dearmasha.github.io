@@ -56,7 +56,7 @@
     </body>
     
 <script src="http://www.kirilv.com/tiny.cdn/lib/request/0.4.1/request.min.js"></script>
-<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 
 <script>
     function playerInit() {
@@ -160,7 +160,9 @@
             var view = document.getElementById('view');
             
             view.innerHTML = body;
-            if (hash === '#demoreel') playerInit();
+            if (hash === '#demoreel') {
+                playerInit();
+            }
         });
     }
     
