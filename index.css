@@ -137,34 +137,37 @@ div#reel iframe {
 }
 
 .entry-wrapper {
-    margin: 40px auto 0;
-    width: 50%;
+    margin: 30px auto 10px;
+    width: 20%;
     float: left;
 }
 
 .caption {
-    display: table;
+/*    display: table;*/
     position: relative;
+    text-align: center;
 }
 
 .caption img {
     width: 90px;
     height: 90px;
     object-fit: cover;
-    display: table-cell;
+/*    display: table-cell;*/
     vertical-align: middle;
     border-radius: 50%;
+    margin: 0 auto 15px;
 }
 
 .caption div {
-    display: table-cell;
+/*    display: table-cell;*/
+/*    text-align: left;*/
     vertical-align: middle;
-    padding: 0px 15px;
+    padding: 0px 10px;
 }
 
 .caption p {
     padding: 0;
-    margin: 4px 0;
+    margin: 6px 0;
     font-size: .94em;
 }
 
@@ -306,6 +309,22 @@ Media
     .entry-wrapper {
         width: 90%;
         float: none;
+    }
+    
+    .caption {
+        display: table;
+    }
+
+    .caption img {
+        display: table-cell;
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+
+    .caption div {
+        display: table-cell;
+        text-align: left;
+        padding-left: 20px;
     }
     
     .big-logo {
